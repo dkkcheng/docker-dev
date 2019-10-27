@@ -25,8 +25,7 @@ RUN apt update \
     && docker-php-ext-install pdo_mysql
 
 # 安装redis的扩展&安装xdebug的扩展
-RUN pecl install redis && docker-php-ext-enable redis \
-	&& pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install redis && docker-php-ext-enable redis 
 # 把容器内的php配置文件清空，在yml文件使用外边的php.ini方便配置
 RUN echo "" >> /usr/local/etc/php/php.ini
 # 解决docker容器内的文件权限不一致的问题
