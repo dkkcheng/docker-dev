@@ -2,6 +2,9 @@
 
 这是一个docker的服务器环境配置的项目，可以一键配置docker的php环境。
 
+克隆本项目，执行命令
+`docker-compose up -d`
+
 ## composer的安装
 
 composer是php开发必须的包管理工具。所以开发环境需要使用composer进行安装相应的框架。

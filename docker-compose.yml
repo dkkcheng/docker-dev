@@ -1,5 +1,4 @@
 version: "3.1"
-# 服务列表
 services:
   mydb:
     build: ./mysql
@@ -9,6 +8,7 @@ services:
       - 3306:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
     environment:
       MYSQL_ROOT_PASSWORD: 123456
   myredis:
@@ -19,6 +19,7 @@ services:
       - "6379:6379"
     volumes:
       - ./redis:/data
+      - /etc/localtime:/etc/localtime:ro
   myphp:
     build: ./php
     build: ./php
@@ -29,6 +30,7 @@ services:
     volumes:
       - ./www:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/php.ini
+      - /etc/localtime:/etc/localtime:ro
     links:
       - "mydb"
       - "myredis"
@@ -43,10 +45,8 @@ services:
       - "myphp"
     volumes:
       - ./www:/var/www/html
-      # ngin的配置文件
       - ./nginx/conf.d:/etc/nginx/conf.d
-      # 配置nginx的log目录，方便查看
       - ./logs/nginx.log:/var/log/nginx
-      # 配置nginx的ssl目录
       - ./nginx/ssl:/etc/nginx/ssl
+      - /etc/localtime:/etc/localtime:ro
     restart: always

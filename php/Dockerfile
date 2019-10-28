@@ -21,7 +21,6 @@ RUN apt update \
     && docker-php-ext-install gd \
     && apt install -y zip \
     && docker-php-ext-install zip \
-    && docker-php-ext-install pdo \
     && docker-php-ext-install pdo_mysql
 
 # 安装redis的扩展&安装xdebug的扩展
